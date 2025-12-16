@@ -1,10 +1,10 @@
-# 📘 Project Requirements & IP Addressing Plan
+# Project Requirements & IP Addressing Plan
 **Project Name:** Technical College Campus Network
 **Topology:** 4 Buildings (CS, Engineering, Administration, Library) + ISP Connection
 
 ---
 
-## 1. Corrected VLSM Subnetting Table (IP Plan)
+## 1. VLSM Subnetting Table (IP Plan)
 This table corrects the subnet mask errors found in the initial draft.
 
 | Building | Hosts Needed | Network Address | Subnet Mask | CIDR | First Usable IP (Gateway) | Last Usable IP | Broadcast IP |
@@ -34,7 +34,7 @@ Point-to-Point connections using **Serial/Gigabit** links with **/30** masks.
 
 ---
 
-## 3. 🏢 Device Count & Requirements Per Building
+## 3. Device Count & Requirements Per Building
 
 ###  CS Building (Computer Science)
 * **Requirements:**
@@ -61,7 +61,7 @@ Point-to-Point connections using **Serial/Gigabit** links with **/30** masks.
 * **Total Hosts:** **80 Devices**
 * **Switching Hardware:** 2 Access Switches + 1 Distribution Switch
 
-### 📚 Library Building
+###  Library Building
 * **Requirements:**
     * Student PCs = 60 PCs
     * Staff PCs = 10 PCs
