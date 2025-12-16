@@ -1,5 +1,5 @@
 # Topology : 
-<img width="2456" height="1020" alt="image" src="https://github.com/user-attachments/assets/0ec09076-ed2b-4333-a3f1-ba272033af95" />
+<img width="2157" height="975" alt="image" src="https://github.com/user-attachments/assets/e156adb2-d26f-407c-b7de-c4efd4ac5579" />
 
 
 # conf : 
@@ -13,3 +13,9 @@
 
 ## bgp : 
 <img width="805" height="896" alt="image" src="https://github.com/user-attachments/assets/445a70f9-bed0-4fd5-ab6c-7fbe8cf1cdcf" />
+
+
+# Maib Router : 
+
+## Connect with Internet ( ISP ) : 
+<img width="805" height="896" alt="image" src="https://github.com/user-attachments/assets/0b011b9c-b12d-42b1-8d60-986591703e06" />
