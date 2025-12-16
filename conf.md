@@ -15,7 +15,7 @@
 <img width="805" height="896" alt="image" src="https://github.com/user-attachments/assets/445a70f9-bed0-4fd5-ab6c-7fbe8cf1cdcf" />
 
 
-# Maib Router : 
+# Main Router : 
 
 ## Connect with Internet ( ISP ) : 
 <img width="805" height="896" alt="image" src="https://github.com/user-attachments/assets/0b011b9c-b12d-42b1-8d60-986591703e06" />
@@ -41,6 +41,40 @@
 ## ACL : 
 <img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/3daf237c-8216-410d-a355-c23ebadd0f09" />
 
+
+# CS Router : 
+Interfaces : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/b7cf6533-4b32-4e8c-ae23-bfcd925abc21" />
+
+Interfaces & DHCP : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/b9021a49-1452-48b4-8c0c-e37df3e2f187" />
+
+OSPF :
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/43be9938-ecdf-4720-ba25-620dd0f71ec0" />
+
+# ENG ROuter : 
+interfaces : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/d5f2cab3-0e7e-45d4-83dd-3f440c26b00d" />
+
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/e1cd5ded-d3f1-47c5-b8b2-08ac5fbc2fbd" />
+
+# DHCP : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/6fa89936-d7ff-4d71-b6dc-8c80a4b4db8b" />
+
+# OSPF : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/2a25b368-6789-44f0-8f96-6c2f42e7fbcd" />
+
+
+# Admin Router :
+interfaces : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/1c23fb52-ddd9-437a-9103-ef6538bcf5ab" />
+
+
+DHCP :
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/c1f9c39c-0bc1-40ab-bfd6-cd261f32a80d" />
+
+OSPF : 
+<img width="810" height="895" alt="image" src="https://github.com/user-attachments/assets/e26573e6-1add-4d4b-b51c-f66bec4af0bf" />
 
 
 
