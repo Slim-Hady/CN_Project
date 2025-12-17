@@ -367,6 +367,25 @@ write memory
 
 <img width="872" height="701" alt="image" src="https://github.com/user-attachments/assets/bce51b2f-0679-46cd-a7f3-803e6ad7976c" />
 
+# ACL : 
+```
+access-list 100 deny ip 10.0.0.0 0.0.0.127 10.0.0.128 0.0.0.63
+access-list 100 deny ip 10.0.0.0 0.0.0.127 10.0.0.192 0.0.0.63
+access-list 100 permit ip any any
+
+interface GigabitEthernet0/0.10
+ description Gateway-for-Labs
+ ip access-group 100 in
+ exit
+
+end
+write
+```
+### Testing : 
+
+<img width="546" height="210" alt="image" src="https://github.com/user-attachments/assets/ee0c7590-b751-4601-8499-f1a8769649f6" />
+
+
 # BUILDING 2: ENGINEERING (ENG) 
 
 STEP 6: ENG Distribution Switch
@@ -653,3 +672,25 @@ write memory
 
 <img width="962" height="810" alt="image" src="https://github.com/user-attachments/assets/19422d1c-24ff-4139-9450-61bb087b9e60" />
 
+### ACL : 
+```
+enable
+configure terminal
+
+! Deny Students (10.0.1.0/26) -> Faculty (10.0.1.64/27)
+access-list 100 deny ip 10.0.1.0 0.0.0.63 10.0.1.64 0.0.0.31
+! Deny Students (10.0.1.0/26) -> Admin (10.0.1.96/27)
+access-list 100 deny ip 10.0.1.0 0.0.0.63 10.0.1.96 0.0.0.31
+! Permit Everything Else
+access-list 100 permit ip any any
+
+interface GigabitEthernet0/0.20
+ description Gateway-for-ENG-Labs
+ ip access-group 100 in
+ exit
+
+end
+write
+```
+### testing : 
+<img width="546" height="210" alt="image" src="https://github.com/user-attachments/assets/36c04494-88e3-4495-998a-b2ecd4093359" />
