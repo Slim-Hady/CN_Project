@@ -1,5 +1,8 @@
 ## 1. Project Topology Overview
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/bd038909-d1ce-4c2a-b85c-0b19c59f4d2f" />
+
+
 We designed a hierarchical network for a University Campus consisting of four separate buildings:
 
 1. **CS (Computer Science)**
