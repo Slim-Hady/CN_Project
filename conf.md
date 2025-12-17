@@ -694,3 +694,28 @@ write
 ```
 ### testing : 
 <img width="546" height="210" alt="image" src="https://github.com/user-attachments/assets/36c04494-88e3-4495-998a-b2ecd4093359" />
+
+# bouns for now : 
+Port Security (Layer 2 Protection)
+
+    Description: Implemented strict security policies at the access layer to prevent unauthorized devices (Rogue Laptops/Hubs) from connecting to the network.
+
+    Configuration:
+
+        Sticky MAC: Automatically learns connected device addresses.
+
+        Violation Modes: Configured shutdown for Faculty (Zero Tolerance) and restrict for Students (Log & Drop).
+
+    Impact: Prevents "Man-in-the-Middle" attacks and unauthorized network access.
+
+2. Management VLAN Isolation (VLAN 99)
+
+    Description: Created a dedicated Management VLAN (VLAN 99) separate from user data traffic (Student/Faculty VLANs).
+
+    Impact: Follows industry best practices for "Out-of-Band Management." It ensures that network administrators can still access and manage switches remotely via SSH even if the student network is congested or under attack.
+
+3. Spanning-Tree PortFast (Performance Optimization)
+
+    Description: Enabled spanning-tree portfast on all end-user ports.
+
+    Impact: Reduces the time for a port to become active from 30 seconds to sub-seconds. This eliminates DHCP timeouts when PCs are turned on, ensuring immediate connectivity
