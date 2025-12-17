@@ -556,3 +556,100 @@ line vty 0 4
 end
 write memory
 ```
+# STEP 10: ENG Router
+```
+enable
+configure terminal
+hostname Eng-Router
+
+! DHCP Exclusions
+ip dhcp excluded-address 10.0.1.1 10.0.1.10
+ip dhcp excluded-address 10.0.1.65 10.0.1.75
+ip dhcp excluded-address 10.0.1.97 10.0.1.105
+ip dhcp excluded-address 10.0.254.65 10.0.254.75
+
+! Remove old pool
+no ip dhcp pool ENG-POOL
+
+! Clear G0/0
+default interface GigabitEthernet0/0
+interface GigabitEthernet0/0
+ no ip address
+ no shutdown
+ exit
+
+! Sub-interfaces for VLANs
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 10.0.1.1 255.255.255.192
+ exit
+
+interface GigabitEthernet0/0.21
+ encapsulation dot1Q 21
+ ip address 10.0.1.65 255.255.255.224
+ exit
+
+interface GigabitEthernet0/0.22
+ encapsulation dot1Q 22
+ ip address 10.0.1.97 255.255.255.224
+ exit
+
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 10.0.254.65 255.255.255.192
+ exit
+
+! WAN Interface
+interface Serial0/3/1
+ ip address 10.0.10.6 255.255.255.252
+ no shutdown
+ exit
+
+! DHCP Pools
+ip dhcp pool ENG-LABS
+ network 10.0.1.0 255.255.255.192
+ default-router 10.0.1.1
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool ENG-FACULTY
+ network 10.0.1.64 255.255.255.224
+ default-router 10.0.1.65
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool ENG-ADMIN
+ network 10.0.1.96 255.255.255.224
+ default-router 10.0.1.97
+ dns-server 8.8.8.8
+ exit
+
+! OSPF
+router ospf 1
+ router-id 3.3.3.3
+ network 10.0.10.4 0.0.0.3 area 0
+ network 10.0.1.0 0.0.0.63 area 0
+ network 10.0.1.64 0.0.0.31 area 0
+ network 10.0.1.96 0.0.0.31 area 0
+ network 10.0.254.64 0.0.0.63 area 0
+ exit
+
+! SSH
+ip domain-name eng.college.local
+crypto key generate rsa
+username admin privilege 15 secret Admin@123
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+write memory
+```
+### TEST for ENG Router: 
+```ping 10.0.10.5```
+
+<img width="962" height="810" alt="image" src="https://github.com/user-attachments/assets/6febdefc-f633-4576-ac77-c38806aae4d9" />
+
+<img width="962" height="810" alt="image" src="https://github.com/user-attachments/assets/19422d1c-24ff-4139-9450-61bb087b9e60" />
+
