@@ -812,4 +812,268 @@ Since this interface is configured as an access port exclusively for VLAN 10, Po
 
 # Admin : 
 ### Admin Dist : 
+```
+enable
+configure terminal
+hostname ADMIN-Distribution-Switch
 
+vlan 30
+ name ADMIN-STAFF
+vlan 31
+ name ADMIN-STUDENTS
+vlan 32
+ name ADMIN-ACCOUNTS
+vlan 33
+ name ADMIN-SERVICES
+vlan 99
+ name MGMT-ADMIN
+exit
+
+interface vlan 99
+ ip address 10.0.254.130 255.255.255.192
+ no shutdown
+ exit
+ip default-gateway 10.0.254.129
+
+interface GigabitEthernet1/0/1
+ description Trunk-to-ADMIN-Router
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 30-33,99
+ no shutdown
+ exit
+
+interface range GigabitEthernet1/0/2-3
+ description Trunk-to-Access-Switches
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ switchport trunk allowed vlan 30-33,99
+ no shutdown
+ exit
+
+end
+write memory
+```
+ ### ADMIN Access Switch 1 (STAFF + STUDENTS)
+
+```
+enable
+configure terminal
+hostname ADMIN-Access-Switch-1
+
+vlan 30
+ name ADMIN-STAFF
+vlan 31
+ name ADMIN-STUDENTS
+vlan 99
+ name MGMT-ADMIN
+exit
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 30,31,99
+ no shutdown
+ exit
+
+! First 12 ports for Staff (VLAN 30)
+interface range FastEthernet0/1-12
+ switchport mode access
+ switchport access vlan 30
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+ no shutdown
+ exit
+
+! Next 12 ports for Students (VLAN 31)
+interface range FastEthernet0/13-24
+ switchport mode access
+ switchport access vlan 31
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+ no shutdown
+ exit
+
+interface vlan 99
+ ip address 10.0.254.135 255.255.255.192
+ no shutdown
+ exit
+ip default-gateway 10.0.254.129
+
+ip domain-name admin.college.local
+crypto key generate rsa
+username admin privilege 15 secret Admin@123
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+write memory
+```
+
+### TEST: 
+```show vlan id 30```
+
+<img width="774" height="212" alt="image" src="https://github.com/user-attachments/assets/abc3432c-3009-4fc4-8e82-d5a8042cbdd5" />
+
+### ADMIN Access Switch 2 (ACCOUNTS + SERVICES) :
+
+```
+enable
+configure terminal
+hostname ADMIN-Access-Switch-2
+
+vlan 32
+ name ADMIN-ACCOUNTS
+vlan 33
+ name ADMIN-SERVICES
+vlan 99
+ name MGMT-ADMIN
+exit
+
+interface GigabitEthernet0/1
+ switchport mode trunk
+ switchport trunk allowed vlan 32,33,99
+ no shutdown
+ exit
+
+! Accounts Department Ports (VLAN 32)
+interface range FastEthernet0/1-12
+ switchport mode access
+ switchport access vlan 32
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+ no shutdown
+ exit
+
+! Services Ports (Printers, CCTV - VLAN 33)
+interface range FastEthernet0/13-24
+ switchport mode access
+ switchport access vlan 33
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+ no shutdown
+ exit
+
+interface vlan 99
+ ip address 10.0.254.136 255.255.255.192
+ no shutdown
+ exit
+ip default-gateway 10.0.254.129
+
+ip domain-name admin.college.local
+crypto key generate rsa
+username admin privilege 15 secret Admin@123
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+write memory
+```
+###  ADMIN Router : 
+```
+enable
+configure terminal
+hostname Admin-Router
+
+ip dhcp excluded-address 10.0.1.129 10.0.1.140
+ip dhcp excluded-address 10.0.1.193 10.0.1.203
+ip dhcp excluded-address 10.0.1.225 10.0.1.232
+ip dhcp excluded-address 10.0.1.241 10.0.1.248
+ip dhcp excluded-address 10.0.254.129 10.0.254.140
+
+default interface GigabitEthernet0/0
+interface GigabitEthernet0/0
+ no ip address
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 10.0.1.129 255.255.255.192
+ exit
+
+interface GigabitEthernet0/0.31
+ encapsulation dot1Q 31
+ ip address 10.0.1.193 255.255.255.224
+ exit
+
+interface GigabitEthernet0/0.32
+ encapsulation dot1Q 32
+ ip address 10.0.1.225 255.255.255.240
+ exit
+
+interface GigabitEthernet0/0.33
+ encapsulation dot1Q 33
+ ip address 10.0.1.241 255.255.255.240
+ exit
+
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 10.0.254.129 255.255.255.192
+ exit
+
+interface Serial0/2/0
+ ip address 10.0.10.10 255.255.255.252
+ no shutdown
+ exit
+
+ip dhcp pool ADMIN-STAFF
+ network 10.0.1.128 255.255.255.192
+ default-router 10.0.1.129
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool ADMIN-STUDENTS
+ network 10.0.1.192 255.255.255.224
+ default-router 10.0.1.193
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool ADMIN-ACCOUNTS
+ network 10.0.1.224 255.255.255.240
+ default-router 10.0.1.225
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool ADMIN-SERVICES
+ network 10.0.1.240 255.255.255.240
+ default-router 10.0.1.241
+ dns-server 8.8.8.8
+ exit
+
+router ospf 1
+ router-id 4.4.4.4
+ network 10.0.10.8 0.0.0.3 area 0
+ network 10.0.1.128 0.0.0.63 area 0
+ network 10.0.1.192 0.0.0.31 area 0
+ network 10.0.1.224 0.0.0.15 area 0
+ network 10.0.1.240 0.0.0.15 area 0
+ network 10.0.254.128 0.0.0.63 area 0
+ exit
+
+ip domain-name admin.college.local
+crypto key generate rsa
+username admin privilege 15 secret Admin@123
+line vty 0 4
+ transport input ssh
+ login local
+ exit
+
+end
+write memory
+```
