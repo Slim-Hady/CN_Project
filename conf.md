@@ -854,6 +854,15 @@ interface range GigabitEthernet1/0/2-3
 end
 write memory
 ```
+
+```show vlan brief```
+
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/ec273939-2303-432b-b4c7-8bbdad29d23e" />
+
+```show interface trunk```
+
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/1cd29ca5-ee50-49ae-9cc1-808c6cb695e4" />
+
  ### ADMIN Access Switch 1 (STAFF + STUDENTS)
 
 ```
@@ -921,6 +930,17 @@ write memory
 ```show vlan id 30```
 
 <img width="774" height="212" alt="image" src="https://github.com/user-attachments/assets/abc3432c-3009-4fc4-8e82-d5a8042cbdd5" />
+
+```show vlan id 31```
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/b2f586d4-bc6b-4372-a723-a7d778dffeed" />
+
+``` show vlan ```
+   Ports 1-12: VLAN 30 (Staff)
+
+   Ports 13-24: VLAN 31 (Students)
+    
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/fb2cda98-29ad-4e13-8093-e6323a983c15" />
+
 
 ### ADMIN Access Switch 2 (ACCOUNTS + SERVICES) :
 
@@ -1077,3 +1097,19 @@ line vty 0 4
 end
 write memory
 ```
+```show ip route connected```
+
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/db574dd5-f07f-4748-819f-16131d4d1624" />
+
+Expected: Shows 5 connected networks (4 VLANs + MGMT)
+
+```show ip route ```
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/f3fb3bcc-46f4-4cfd-8f04-0c2f48521adb" />
+
+### Ping : 
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/6de1b33f-0529-487a-82a2-9bb9d50fb3b0" />
+
+## DHCP : 
+<img width="791" height="405" alt="image" src="https://github.com/user-attachments/assets/d71fad42-6f8e-44c0-826b-d0e5d176d97a" />
+
+
