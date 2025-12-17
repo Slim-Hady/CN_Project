@@ -19,3 +19,8 @@
 
 <img width="970" height="1012" alt="image" src="https://github.com/user-attachments/assets/51914228-8e9f-4cf1-b5d8-ca5f6b81e7fa" />
 
+CS DIST VLAN : 
+<img width="796" height="899" alt="image" src="https://github.com/user-attachments/assets/757adb7a-a6b1-4c75-9388-844d3e497c36" />
+
+CS access switch 1 port sec : 
+<img width="796" height="899" alt="image" src="https://github.com/user-attachments/assets/131bfe0a-9470-4ce7-a148-7c71de258276" />
