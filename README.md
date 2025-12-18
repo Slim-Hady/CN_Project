@@ -136,13 +136,7 @@ Remote management is secured across all devices:
 
 * **Performance:** `spanning-tree portfast` enabled on all access ports to ensure immediate connectivity for DHCP clients.
 
----
 
-## **5. Conclusion**
-
-The implemented network successfully meets the connectivity requirements for the Technical College. It provides a segmented, routed environment with automated IP assignment and strict security controls compliant with the project rubric. The design ensures that Faculty and Admin resources are protected while providing students with necessary resource access.
-
-This project delivers a **secure, scalable, and realistic** enterprise network. By fulfilling all rubric requirements and adding advanced features like **NAT, BGP, and Port Security**, the design simulates a true production environment ready for deployment.
 
 
 
