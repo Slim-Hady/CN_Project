@@ -135,9 +135,3 @@ Remote management is secured across all devices:
 
 
 * **Performance:** `spanning-tree portfast` enabled on all access ports to ensure immediate connectivity for DHCP clients.
-
-
-
-
-
-This project delivers a **secure, scalable, and realistic** enterprise network. By fulfilling all rubric requirements and adding advanced features like **NAT, BGP, and Port Security**, the design simulates a true production environment ready for deployment.
