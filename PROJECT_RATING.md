@@ -162,7 +162,7 @@ access-list 100 permit ip any any
 - ✅ **Management VLAN Isolation:** VLAN 99 separates management from user traffic
 
 **Security Weaknesses:**
-- ❌ **Weak Credentials:** Password `Admin@123` is predictable and publicly documented
+- ❌ **Weak Credentials:** Default password is predictable and publicly documented in configuration files
 - ❌ **No AAA/RADIUS:** Local authentication only (no centralized management)
 - ❌ **No DHCP Snooping:** Vulnerable to rogue DHCP servers
 - ❌ **No Dynamic ARP Inspection:** Susceptible to ARP spoofing attacks
@@ -282,7 +282,11 @@ ip nat inside source list 1 interface Serial0/0/0 overload
 | Testing & Verification | 10/10 | 0.5 | 5.0 |
 | **TOTAL** | | | **143/150** |
 
-**Final Score:** 143/150 = **95.3% → Rounded to 92/100** (accounting for real-world deployment considerations)
+**Final Score Calculation:**
+- Raw Score: 143/150 = 95.3%
+- Converted to 100-point scale: **95/100**
+- Adjusted for real-world deployment readiness: **92/100**
+  - Deduction justification: -3 points for critical missing features (redundancy, advanced security hardening, monitoring) required for production deployment
 
 ---
 
