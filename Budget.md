@@ -1,11 +1,5 @@
 # **Technical College Campus Network - Budget & Equipment Research**
 
-## **Executive Summary**
-
-This document provides a comprehensive budget analysis for implementing the Technical College Campus Network infrastructure.  All pricing is based on real-world market research conducted in Q4 2024 from Egyptian retailers and authorized Cisco resellers.
-
-**Currency:** Egyptian Pound (EGP)
-
 ---
 
 ## **1. Network Equipment Specifications & Research**
